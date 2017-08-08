@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jukebox</title>
+    <link rel="stylesheet" href="jukebox.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/2a31d5a3fd.js"></script>
+  </head>
+  <body>
+    <h1>Jukebox</h1>
+    <audio id="audio" src=""></audio>
+  <div class="main-player-container">
+    <!-- ====== Buttons object ====== -->
+    <div class="album-artwork" >
+      <img class="album-artwork-image" id="image1" src="images/kida.jpg" alt="">
+      <img class="album-artwork-image" id="image4" src="images/locked.jpg" alt="">
+      <img class="album-artwork-image" id="image3" src="images/lettuce.jpg" alt="">
+      <img class="album-artwork-image" id="image2" src="images/headhunters.jpg" alt="">
+    </div>
+    <div class="title">
+      <p></p>
+
+    </div>
+    <div class="actions-container">
+      <div class="action-flex">
+        <div class="action-container">
+          <div class="buttons">
+            <a id="back"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+          </div>
+          <div class="buttons">
+            <a id="play"><i class="fa fa-play" aria-hidden="true"></i></a>
+          </div>
+          <div class="buttons">
+            <a id="pause"><i class="fa fa-pause" aria-hidden="true"></i></i></a>
+          </div>
+          <div class="buttons">
+            <a id="stop"><i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+          <div class="buttons">
+            <a id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- ====== Buttons object end  ======= -->
+      <div class="song-list-container">
+        <ul class=song-list >
+          <a href="#"><li>Radiohead - Everything In It's Right Place</li></a>
+          <a href="#"><li>Fourtet - Locked</li></a>
+          <a href="#"><li>Lettuce - Lettsanity</li></a>
+          <a href="#"><li>Herbie Hancock - Watermelon Man</li></a>
+        </ul>
+
+      </div>
+
+  </div>
+<script type="text/javascript" src="jukebox.js"></script>
+  </body>
+</html>
