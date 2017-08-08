@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .hide();
     $('img.album-artwork-image:eq(' + index +')')
       .show();
+    $('p.title')
+
   };
 
   //Function contains song file path, and song name, and stores them in the arrays.
@@ -38,6 +40,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
    mattjb.addSong("music/03 Lettsanity.m4a");
    mattjb.addSong("music/04 Watermelon Man.mp3");
 
+  let print = document.querySelector('.title');
+  let songArray =
+   ['Radiohead - Everything In Its Right Place',
+   'Fourtet - Locked',
+   'Lettuce - Lettsanity',
+   'Herbie Hancock - Watermelon Man'];
+  let myIndex = 1;
+
+  function printTitles() {
+     print.innerHTML = songArray[myIndex++ % songArray.length]
+  };
+
+  function printTitles() {
+     print.innerHTML = songArray[myIndex++ % songArray.length]
+  };
+
+  print.innerHTML = 'Radiohead - Everything In Its Right Place';
+
+
   Jukebox.prototype.play = function() {
     audio.play();
   };
@@ -47,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   };
 
   audio.src = mattjb.songs[i];
+
+  console.log(mattjb);
 
   Jukebox.prototype.next = function (){
     i ++
@@ -62,84 +85,52 @@ document.addEventListener("DOMContentLoaded", function(event) {
       i = -1;
       console.log('Go to start')
       audio.pause()
-      audio.src = mattjb.songs[i]
       audio.play()
     };
   };
 
-  let print = document.querySelector('.title');
-  let songArray =
-    ['Radiohead - Everything In Its Right Place',
-    'Fourtet - Locked',
-    'Lettuce - Lettsanity',
-    'Herbie Hancock - Watermelon Man'];
-  let myIndex = 1;
+  Jukebox.prototype.back = function(){
+    i --
+    console.log('Position: ', i, ' songs: ', mattjb.songs.length);
+        if (i >= 0 && i < 4){
+          showImage(i);
+          printTitles(i);
+          audio.pause()
+          audio.src = mattjb.songs[i]
+          audio.play()
+      }else if(i < 0 ){
+        i = 0;
+        console.log('Beginning of Playlist');
+      };
+    };
 
-  function printTitles() {
-    print.innerHTML = songArray[myIndex++ % songArray.length]
-  };
+  function click_handler1() { alert("click_handler1"); }
+  function click_handler2() { alert("click_handler2"); }
 
-
-
-  // const songList = document.querySelector('.title');
-  //
-  // function arrayTitles(){
-  //   // caution: drop the "new Array" part or it won't work!
-  //   var titlesArray = {
-  //     list:
-  //       ['Radiohead - Everything In Its Right Place',
-  //       'Fourtet - Locked',
-  //       'Lettuce - Lettsanity',
-  //       'Herbie Hancock - Watermelon Man']
-  //   };
-  //   var printThis = "";
-  //   for(var i = 0; i < titlesArray.list.length; i++){
-  //       printThis.songList + titlesArray[i];
-  //   };
-  //   return printThis; // <-- to be printed to the div
-  // };
-
-
-     Jukebox.prototype.back = function(){
-       i --
-       if (i >= 0 ){
-         audio.pause()
-         audio.src = mattjb.songs[i]
-         audio.play()
-     }else {
-       i = mattjb.songs.length -1;
-       audio.pause()
-         audio.src = mattjb.songs[i]
-         audio.play()
-
-       }
-     };
-
-
+  window.addEventListener('load',function(){
      playButton.addEventListener("click", function(event){
     event.preventDefault();
     mattjb.play();
-  });
+    });
 
-  pauseButton.addEventListener("click", function(event){
-    event.preventDefault();
-    mattjb.pause();
-  });
+    pauseButton.addEventListener("click", function(event){
+      event.preventDefault();
+      mattjb.pause();
+    });
 
-  nextButton.addEventListener("click", function(event){
-    event.preventDefault();
-    mattjb.next();
-    mattjb.arrayTitles
-  });
+    nextButton.addEventListener("click", function(event){
+      event.preventDefault();
+      mattjb.next();
+    });
 
-  backButton.addEventListener("click", function(event){
-    event.preventDefault();
-    mattjb.back();
-  });
+    backButton.addEventListener("click", function(event){
+      event.preventDefault();
+      mattjb.back();
+    });
 
-  stopButton.addEventListener("click", function stopAudio(event){
-    audio.pause();
-    audio.currentTime = 0;
-
+    stopButton.addEventListener("click", function stopAudio(event){
+      audio.pause();
+      audio.currentTime = 0;
+    });
   });
 });
