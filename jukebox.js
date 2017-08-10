@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         audio.src = mattjb.songs[i]
         audio.play()
       }else {
-        i = -2;
+        i = -1;
         console.log('Go to start')
         audio.pause()
         audio.play()
