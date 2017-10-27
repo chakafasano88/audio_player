@@ -3,13 +3,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   window.addEventListener('load',function(){
     console.log('Window Loaded');
 
-    var playButton = document.getElementById('play');
-    var stopButton = document.getElementById('stop');
-    var pauseButton = document.getElementById('pause');
-    var nextButton = document.getElementById('next');
-    var backButton = document.getElementById('back');
-    var audio = document.getElementById('audio')
-    var i = 0;
+    let playButton = document.getElementById('play');
+    let stopButton = document.getElementById('stop');
+    let pauseButton = document.getElementById('pause');
+    let nextButton = document.getElementById('next');
+    let backButton = document.getElementById('back');
+    let audio = document.getElementById('audio')
+    let print = document.querySelector('.title');
+    let i = 0;
 
     function showImage(index) {
       //hide all images
@@ -24,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Function contains song file path, and song name, and stores them in the arrays.
     function Jukebox(){
       this.songs = [];
-
     };
 
     //Adds the song filepath
@@ -32,21 +32,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
       this.songs.push(song);
     };
 
-
-    //Juke Box
-    var mattjb = new Jukebox()
-     mattjb.addSong("music/01 Everything In Its Right Place.m4a")
+    //Juke Box Object
+    let mattjb = new Jukebox()
+     mattjb.addSong("music/01 Everything In Its Right Place.m4a");
      mattjb.addSong("music/02 Locked.m4a");
      mattjb.addSong("music/03 Lettsanity.m4a");
      mattjb.addSong("music/04 Watermelon Man.mp3");
 
 
-    let print = document.querySelector('.title');
     let songArray =
      ['Radiohead - Everything In Its Right Place',
      'Fourtet - Locked',
      'Lettuce - Lettsanity',
-     'Herbie Hancock - Watermelon Man',];
+     'Herbie Hancock - Watermelon Man'];
     let myIndex = 1;
 
     print.innerHTML = 'Radiohead - Everything In Its Right Place';
@@ -104,9 +102,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         };
       };
 
-    function click_handler1() { alert("click_handler1"); }
-    function click_handler2() { alert("click_handler2"); }
-
      playButton.addEventListener("click", function(event){
     event.preventDefault();
     mattjb.play();
@@ -130,6 +125,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
     stopButton.addEventListener("click", function stopAudio(event){
       audio.pause();
       audio.currentTime = 0;
+    });
+
+     playButton.addEventListener("click", function(event){
+      event.preventDefault();
+      mattjb.play();
+    });
+
+    const radiohead = document.querySelector(".click-song1");
+    const fourtet = document.querySelector(".click-song2");
+    const lettuce = document.querySelector(".click-song3");
+    const herbie = document.querySelector(".click-song4");
+
+    // const song1 = radiohead.mattjb.songs[0];
+    // lettuce = mattjb.songs[2];
+    // herbie = mattjb.songs[3];
+
+    radiohead.addEventListener("click", function() {
+      event.preventDefault();
+      audio.src = mattjb.songs[0];
+      mattjb.play();
+    });
+
+    fourtet.addEventListener("click", function() {
+      event.preventDefault();
+      audio.src = mattjb.songs[1];
+      mattjb.play();
+    });
+
+    lettuce.addEventListener("click", function() {
+      event.preventDefault();
+      audio.src = mattjb.songs[2];
+      mattjb.play();
+    });
+
+    herbie.addEventListener("click", function() {
+      event.preventDefault();
+      audio.src = mattjb.songs[3];
+      mattjb.play();
     });
   });
 });

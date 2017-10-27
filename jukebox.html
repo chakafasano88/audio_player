@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="jukebox.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/2a31d5a3fd.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script type="text/javascript" src="jukebox.js"></script>
 
   </head>
@@ -14,17 +15,18 @@
     <audio id="audio" src=""></audio>
   <div class="main-player-container">
     <!-- ====== Buttons object ====== -->
-    <div class="album-artwork" >
+  <div class="top-parent-container">
+    <div class="child1" >
       <img class="album-artwork-image" id="image1" src="images/kida.jpg" alt="">
       <img class="album-artwork-image" id="image4" src="images/locked.jpg" alt="">
       <img class="album-artwork-image" id="image3" src="images/lettuce.jpg" alt="">
       <img class="album-artwork-image" id="image2" src="images/headhunters.jpg" alt="">
     </div>
-    <div class="title">
-      <p></p>
+    <div class="child2">
+      <div class="title">
+        <p></p>
 
-    </div>
-    <div class="actions-container">
+      </div>
       <div class="action-flex">
         <div class="action-container">
           <div class="buttons">
@@ -45,15 +47,15 @@
         </div>
       </div>
     </div>
+  </div>
       <!-- ====== Buttons object end  ======= -->
       <div class="song-list-container">
         <ul class=song-list >
-          <a href="#"><li>Radiohead - Everything In It's Right Place</li></a>
-          <a href="#"><li>Fourtet - Locked</li></a>
-          <a href="#"><li>Lettuce - Lettsanity</li></a>
-          <a href="#"><li>Herbie Hancock - Watermelon Man</li></a>
+          <a class="click-song1" href="#"><li>Radiohead - Everything In It's Right Place</li></a>
+          <a class="click-song2" href="#"><li>Fourtet - Locked</li></a>
+          <a class="click-song3" href="#"><li>Lettuce - Lettsanity</li></a>
+          <a class="click-song4" href="#"><li>Herbie Hancock - Watermelon Man</li></a>
         </ul>
-
       </div>
 
   </div>
