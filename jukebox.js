@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let print = document.querySelector('.title');
     let i = 0;
 
+
     function showImage(index) {
       //hide all images
       //show image of song on that index
@@ -20,6 +21,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         .hide();
       $('img.album-artwork-image:eq(' + index +')')
         .show();
+    };
+
+    function toggleHighlight(e){
+      let list = document.querySelector('.song-list').children;
+      for(var i = 0; i < list.length; i++){
+        list[i].className = 'item';
+      }
+      e.className = 'active';
     };
 
     //Function contains song file path, and song name, and stores them in the arrays.
@@ -39,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
      mattjb.addSong("music/03 Lettsanity.m4a");
      mattjb.addSong("music/04 Watermelon Man.mp3");
 
-
     let songArray =
      ['Radiohead - Everything In Its Right Place',
      'Fourtet - Locked',
      'Lettuce - Lettsanity',
      'Herbie Hancock - Watermelon Man'];
+
     let myIndex = 1;
 
     print.innerHTML = 'Radiohead - Everything In Its Right Place';
@@ -57,8 +66,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
        print.innerHTML = songArray[--myIndex % songArray.length -1];
     };
 
-
-
+//=========== AUDIO FUNCTIONALITY ===========
     Jukebox.prototype.play = function() {
       audio.play();
     };
@@ -67,10 +75,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
      audio.pause();
     };
 
+    // console.log(mattjb.songs[i]);
+
     audio.src = mattjb.songs[i];
 
     Jukebox.prototype.next = function (){
-      i ++
+      i++
       console.log('Position: ', i, ' songs: ', mattjb.songs.length);
       if(i >= 0 && i <= 3){
         console.log('less than total');
@@ -102,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         };
       };
 
+
+
      playButton.addEventListener("click", function(event){
     event.preventDefault();
     mattjb.play();
@@ -132,35 +144,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
       mattjb.play();
     });
 
-    const radiohead = document.querySelector(".click-song1");
-    const fourtet = document.querySelector(".click-song2");
-    const lettuce = document.querySelector(".click-song3");
-    const herbie = document.querySelector(".click-song4");
+    const radiohead = document.querySelector(".click-song-1");
+    const fourtet = document.querySelector(".click-song-2");
+    const lettuce = document.querySelector(".click-song-3");
+    const herbie = document.querySelector(".click-song-4");
 
-    // const song1 = radiohead.mattjb.songs[0];
-    // lettuce = mattjb.songs[2];
-    // herbie = mattjb.songs[3];
 
     radiohead.addEventListener("click", function() {
-      event.preventDefault();
+      toggleHighlight(this)
       audio.src = mattjb.songs[0];
       mattjb.play();
     });
 
     fourtet.addEventListener("click", function() {
       event.preventDefault();
+      toggleHighlight(this)
       audio.src = mattjb.songs[1];
       mattjb.play();
     });
 
     lettuce.addEventListener("click", function() {
       event.preventDefault();
+      toggleHighlight(this)
       audio.src = mattjb.songs[2];
       mattjb.play();
     });
 
     herbie.addEventListener("click", function() {
       event.preventDefault();
+      toggleHighlight(this)
       audio.src = mattjb.songs[3];
       mattjb.play();
     });

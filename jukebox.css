@@ -5,7 +5,7 @@ body {
   justify-content: center;
   margin-top: 10%;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .main-player-container{
@@ -29,7 +29,6 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  background-color: grey;
 }
 
 .child1 {
@@ -95,15 +94,34 @@ img {
 .song-list-container {
   width: 100%;
   border-top: 5px solid gold;
-  height: 170px;
 }
 
-.song-list li {
-  color: white;
+.song-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.items {
+  color: grey;
   list-style: none;
   padding-bottom: 20px;
   position: relative;
   right: 40px;
+
+}
+
+#songs-text{
+  margin-bottom: 20px;
+}
+
+a.active {
+  color: white;
+}
+
+a {
+  color: grey;
 }
 
 a:link {
